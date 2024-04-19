@@ -8,68 +8,60 @@ load_dotenv()  # .envファイルから環境変数を読み込む
 
 anthropic.api_key = os.getenv("ANTHROPIC_API_KEY")  # 環境変数からAPI keyを取得
 
+
 def generate_syllabus(transcript):
     """
     文字起こし情報からカリキュラムを作成する関数
-    
+
     Args:
         transcript (str): 文字起こし情報
-        
+
     Returns:
         str: カリキュラム
     """
     client = anthropic.Anthropic(api_key=anthropic.api_key)
-    
+
     prompt = f"""
     以下の文字起こし情報からカリキュラムを作成してください。
     カリキュラムはyaml形式で出力してください。
     文字起こし情報:
     {transcript}
-    
+
     以下を例として（週はweek、月はmonth、年はyearなど考えて記述）
     - week: 1
      topics:
-     - 
+     -
      lectures:
        - title: （複数）
        description: |
     - week: 2
      topics:
-     - 
+     -
      lectures:
        - title: （複数）
        description: |
-         
+
     """
-    
+
     response = client.messages.create(
         model="claude-3-opus-20240229",
         max_tokens=4000,
         temperature=0.7,
-        messages=[
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": prompt
-                    }
-                ]
-            }
-        ]
+        messages=[{"role": "user", "content": [{"type": "text", "text": prompt}]}],
     )
-    
+
     syllabus_yaml = response.content[0].text.strip()
     syllabus_yaml = syllabus_yaml.replace("```yaml", "").replace("```", "")
     return syllabus_yaml
 
+
 def generate_syllabus_graph():
     """
     syllabusの内容からグラフを生成する関数
-    
+
     Args:
         syllabus (dict): syllabusの内容が入った辞書
-        
+
     Returns:
         None
     """
@@ -112,34 +104,24 @@ def generate_syllabus_graph():
 
     pythonのコードブロックのみ出力。その他説明は書かないこと。
     """
-    
+
     response = client.messages.create(
         model="claude-3-opus-20240229",
         max_tokens=4000,
         temperature=0.7,
-        messages=[
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "text",
-                        "text": prompt
-                    }
-                ]
-            }
-        ]
+        messages=[{"role": "user", "content": [{"type": "text", "text": prompt}]}],
     )
-    
+
     code = response.content[0].text.strip()
-    
+
     code = code.replace("```python", "").replace("```", "")
     with open("generate_syllabus_graph.py", "w") as f:
         f.write(code)
 
     # codeを実行するコードを追記
     exec(code)
-    
-    
+
+
 # from generate_syllabus_graph import generate_syllabus_graph
 
 # 使用例
@@ -149,9 +131,9 @@ import time
 steps = [
     "📜 文字起こしデータの読み込み",
     "📝 シラバスの生成",
-    "💾 シラバスのテキストファイルへの保存", 
+    "💾 シラバスのテキストファイルへの保存",
     "📂 ファイル名変更",
-    "📊 シラバスからグラフの生成"
+    "📊 シラバスからグラフの生成",
 ]
 
 for step in tqdm(steps):
@@ -174,5 +156,7 @@ for step in tqdm(steps):
         print(f"{step}完了！")
     time.sleep(0.5)
 
-print("✏️ シラバスの内容は syllabus.yaml を書き換えることで、ご自身の求めている形に変更できます。")
+print(
+    "✏️ シラバスの内容は syllabus.yaml を書き換えることで、ご自身の求めている形に変更できます。"
+)
 print("📜 syllabus.yamlのリンク: ./syllabus.yaml")
