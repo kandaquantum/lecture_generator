@@ -1,60 +1,50 @@
 // Syllabus Graph
 digraph {
-	"Month 1
-武士の歴史と心構え" [fillcolor=lightblue shape=box style=filled]
-	"Month 1
-武士の歴史と心構え" -> lectures_month_1 [headport=nw style=dashed tailport=s]
-	subgraph cluster_month_1 {
-		lectures_month_1 [label="武士の起源と発展
-武士道の基本理念" shape=box]
+	"Chapter 1
+人間の生理的特徴に関する哲学的考察" [fillcolor=lightblue shape=box style=filled]
+	"Chapter 1
+人間の生理的特徴に関する哲学的考察" -> lectures_week_1 [headport=sw style=dashed tailport=s]
+	subgraph cluster_week_1 {
+		lectures_week_1 [label="人間はなぜ寝るときに目を閉じるのか？" shape=box]
 	}
-	"Month 2
-武芸の基礎" [fillcolor=lightblue shape=box style=filled]
-	"Month 2
-武芸の基礎" -> lectures_month_2 [headport=nw style=dashed tailport=s]
-	subgraph cluster_month_2 {
-		lectures_month_2 [label="剣術の基本
-弓術の基本
-馬術の基本
-武芸の心法" shape=box]
+	"Chapter 2
+物理法則の変化が人生に与える影響" [fillcolor=lightblue shape=box style=filled]
+	"Chapter 2
+物理法則の変化が人生に与える影響" -> lectures_week_2 [headport=sw style=dashed tailport=s]
+	subgraph cluster_week_2 {
+		lectures_week_2 [label="もしも重力が逆向きだったら、人生はどう変わるか？" shape=box]
 	}
-	"Month 3
-兵法と戦略" [fillcolor=lightblue shape=box style=filled]
-	"Month 3
-兵法と戦略" -> lectures_month_3 [headport=nw style=dashed tailport=s]
-	subgraph cluster_month_3 {
-		lectures_month_3 [label="孫子の兵法
-合戦の戦略と戦術
-指揮官の資質" shape=box]
+	"Chapter 3
+地球外知的生命体の存在と人類との関係性" [fillcolor=lightblue shape=box style=filled]
+	"Chapter 3
+地球外知的生命体の存在と人類との関係性" -> lectures_week_3 [headport=sw style=dashed tailport=s]
+	subgraph cluster_week_3 {
+		lectures_week_3 [label="宇宙人が地球に来ないのは、我々が彼らのペットだからなのか？" shape=box]
 	}
-	"Month 4
-文化と教養" [fillcolor=lightblue shape=box style=filled]
-	"Month 4
-文化と教養" -> lectures_month_4 [headport=nw style=dashed tailport=s]
-	subgraph cluster_month_4 {
-		lectures_month_4 [label="茶道の基本
-花道の基本
-書道の基本
-思想的背景の理解" shape=box]
+	"Chapter 4
+時間旅行の実現に伴う社会的・倫理的問題" [fillcolor=lightblue shape=box style=filled]
+	"Chapter 4
+時間旅行の実現に伴う社会的・倫理的問題" -> lectures_week_4 [headport=sw style=dashed tailport=s]
+	subgraph cluster_week_4 {
+		lectures_week_4 [label="時間旅行が可能になったら、歴史上の偉人とトイレを借りる権利を争うことになるのか？" shape=box]
 	}
-	"Month 5
-総合実践" [fillcolor=lightblue shape=box style=filled]
-	"Month 5
-総合実践" -> lectures_month_5 [headport=nw style=dashed tailport=s]
-	subgraph cluster_month_5 {
-		lectures_month_5 [label="合戦シミュレーション
-武士としての生き方" shape=box]
+	"Chapter 5
+空想上の生物の存在と特性に関する考察" [fillcolor=lightblue shape=box style=filled]
+	"Chapter 5
+空想上の生物の存在と特性に関する考察" -> lectures_week_5 [headport=sw style=dashed tailport=s]
+	subgraph cluster_week_5 {
+		lectures_week_5 [label="ユニコーンが存在しないのは、彼らがニンジャだからなのか？" shape=box]
 	}
-	"Month 1
-武士の歴史と心構え" -> "Month 2
-武芸の基礎"
-	"Month 2
-武芸の基礎" -> "Month 3
-兵法と戦略"
-	"Month 3
-兵法と戦略" -> "Month 4
-文化と教養"
-	"Month 4
-文化と教養" -> "Month 5
-総合実践"
+	"Chapter 1
+人間の生理的特徴に関する哲学的考察" -> "Chapter 2
+物理法則の変化が人生に与える影響"
+	"Chapter 2
+物理法則の変化が人生に与える影響" -> "Chapter 3
+地球外知的生命体の存在と人類との関係性"
+	"Chapter 3
+地球外知的生命体の存在と人類との関係性" -> "Chapter 4
+時間旅行の実現に伴う社会的・倫理的問題"
+	"Chapter 4
+時間旅行の実現に伴う社会的・倫理的問題" -> "Chapter 5
+空想上の生物の存在と特性に関する考察"
 }
